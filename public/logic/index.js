@@ -1,12 +1,14 @@
 $(document).ready(async function() {
 
-    $("#login").on("click", function() {
+    $("#login").on("click", function(event) {
+        event.preventDefault();
+        let userBody = {
+            name: $("input[name=username]").val(),
+            password: $("input[name=password]").val()
+        };
         $.ajax({
             method: "POST",
-            data: {
-                name: "testboy",
-                password: "test"
-            },
+            data: userBody,
             url: "/api/users/login",
             success: function(data) {
                 console.log("This is running");

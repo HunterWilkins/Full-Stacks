@@ -8,7 +8,7 @@ router.get("/", function(req, res) {
     }
 
     else {
-        res.redirect("/login");
+        res.sendFile(path.join(__dirname, "../public/bacon.html"));
     }
 });
 

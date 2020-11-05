@@ -25,22 +25,6 @@ app.use("/api/users", controllers.users);
 app.use("/api/posts", controllers.posts);
 app.use("/", routes.htmlRoutes);
 
-// app.get("/", function(req, res) {
-//     console.log("Req.User is not null: " + (req.user != null));
-//     if (req.user) {
-//         console.log("Found User");
-//         res.redirect("/secret");
-//     }
-//     else {
-//         console.log("Didn't Find User");
-//         res.sendFile(path.join(__dirname, "./public/index.html"));
-//     }
-// });
-
-// app.get("/secret", isAuthenticated, function(req, res) {
-//     res.sendFile(path.join(__dirname, "./public/secret.html"));
-// });
-
 db.sequelize.sync().then(function() {
     app.listen(PORT, () => {
         console.log("Server Listening on " + PORT);
