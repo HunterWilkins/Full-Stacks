@@ -1,6 +1,31 @@
 $(document).ready(async function() {
 
-    const users = await $.getJSON("/api/users");
-    $("#users").append(users.map(item => `<li style = "${item.gender ? "color: white" : "color: blue"}">${item.name}</li>`));
+    $("#login").on("click", function() {
+        $.ajax({
+            method: "POST",
+            data: {
+                name: "testboy",
+                password: "test"
+            },
+            url: "/api/users/login",
+            success: function(data) {
+                console.log("This is running");
+                if (data) {
+                    window.location.replace("/secret");
+                }
+            },
+            error: function(data) {
+                if (data.status === 401) {
+                    alert("No User with your Credentials. Try again, or Sign Up!");            
+                }
+                else {
+                    alert("Something went wrong on our side. Sorry! Try again.");
+                }
+            },
+            dataType: "json"
+        });
+    });
+
+
 });
 
