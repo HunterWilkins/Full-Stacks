@@ -8,13 +8,13 @@ router.get("/", function(req, res) {
     }
 
     else {
-        res.sendFile(path.join(__dirname, "../public/bacon.html"));
+        res.sendFile(path.join(__dirname, "../public/index.html"));
     }
 });
 
 router.get("/login", function(req, res) {
     console.log(req.user);
-    res.sendFile(path.join(__dirname, "../public/bacon.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 })
 
 router.get("/secret", isAuthenticated, function(req, res) {
